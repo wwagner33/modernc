@@ -47,18 +47,38 @@ Wellington Wagner F. Sarmento
 ```
 > Para Windows
 - Arquivo: tasks.json
-- Retirado de []()
+- Retirado de [https://code.visualstudio.com/docs/cpp/config-mingw](https://code.visualstudio.com/docs/cpp/config-mingw)
 
 ```json
-
+{
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "C/C++: g++.exe build active file",
+      "command": "C:/msys64/mingw64/bin/g++.exe",
+      "args": ["-g", "${file}", "-o", "${fileDirname}\\${fileBasenameNoExtension}.exe"],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "compiler: C:/msys64/mingw64/bin/g++.exe"
+    }
+  ],
+  "version": "2.0.0"
+}
 ```
 > Para macOS
 - Arquivo launch.json
 - Retirado de [https://code.visualstudio.com/docs/cpp/config-clang-mac](https://code.visualstudio.com/docs/cpp/config-clang-mac)
 
 ```json
-    "version": "0.2.0",
-    "configurations": [
+{
+"version": "0.2.0",
+"configurations": [
         {
             "name": "clang - Criar e depurar o arquivo ativo",
             "type": "cppdbg",
@@ -77,24 +97,33 @@ Wellington Wagner F. Sarmento
 ```
 > Para Windows
 - Arquivo launch.json
-- Retirado de []()
+- Retirado de [https://code.visualstudio.com/docs/cpp/config-mingw](https://code.visualstudio.com/docs/cpp/config-mingw)
 
 ```json
-    "version": "0.2.0",
-    "configurations": [
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "g++.exe - Build and debug active file",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:\\msys64\\mingw64\\bin\\gdb.exe",
+      "setupCommands": [
         {
-            "name": "clang - Criar e depurar o arquivo ativo",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "lldb",
-            "preLaunchTask": "C/C++: clang arquivo de build ativo"
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
         }
-    ]
+      ],
+      "preLaunchTask": "C/C++: g++.exe build active file"
+    }
+  ]
 }
 ```
