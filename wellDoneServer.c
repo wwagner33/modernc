@@ -27,10 +27,11 @@
 #include <netdb.h>
 
 /* porta do servido */
-#define PORT 2424 
+#define PORT 4242
 
 /* Tamanho do Buffer */
 #define BUFFER_LENGTH 4096
+
 
 int main(int argc, char *argv[]) {
 
@@ -90,7 +91,7 @@ int main(int argc, char *argv[]) {
     }
 
     /*  Copia no buffer a mensagem de boas-vindas do servidor */
-    strcpy(buffer,"WUP\n\0");
+    strcpy(buffer,"Servidor manda ola! \n\0");
 
     /* Envia a mensagem para o cliente */
     if(send(clientfd,buffer,strlen(buffer),0)){
@@ -110,8 +111,8 @@ int main(int argc, char *argv[]) {
         }
 
         /* Se for enviada a mensagem BYE a conexao e desfeita */
-        if(strcmp(buffer,"BYE") == 0){
-            send(clientfd,"BYE",3,0);
+        if(strcmp(buffer,"bye") == 0){
+            send(clientfd,"bye",3,0);
         } else {
             send(clientfd,"Mensagem recebida!\n",4,0);
         }

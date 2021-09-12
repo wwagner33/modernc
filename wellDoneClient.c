@@ -68,8 +68,8 @@ int main(int argc, char *argv[]) {
     fprintf(stdout,"Cliente criado com o descritor de arquivo do socket fd: %d\n",sockfd);
 
     /* Propriedades de conexao do socket */
-    server.sin_family = AF_INET;
-    server.sin_port = htons(PORT);
+    server.sin_family=AF_INET;
+    server.sin_port=htons(PORT);
     server.sin_addr.s_addr = inet_addr(SERVER_ADDR);
     memset(server.sin_zero,0x0,8);
 
@@ -97,7 +97,7 @@ int main(int argc, char *argv[]) {
         slen = recv(sockfd,buffer_in,LEN,0);
 
         /* Se receber a mensagem BYE fara desconexao */
-        if(strcmp(buffer_in,"BYE") == 0){
+        if(strcmp(buffer_in,"bye") == 0){
             break;
         }
     }
