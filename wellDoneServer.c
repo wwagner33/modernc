@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
     }
 
     /*  Copia no buffer a mensagem de boas-vindas do servidor */
-    strcpy(buffer,"Servidor manda ola! \n");
+    strcpy(buffer,"Servidor manda ola! \n\0");
 
     /* Envia a mensagem para o cliente */
     if(send(clientfd,buffer,strlen(buffer),0)){
