@@ -13,8 +13,8 @@ Wellington Wagner F. Sarmento
 - **Instalações**
 - **Configurações**:
 > Para macOS
-> Arquivo tasks.json
-> Retirado de [https://code.visualstudio.com/docs/cpp/config-clang-mac](https://code.visualstudio.com/docs/cpp/config-clang-mac)
+- Arquivo tasks.json
+- Retirado de [https://code.visualstudio.com/docs/cpp/config-clang-mac](https://code.visualstudio.com/docs/cpp/config-clang-mac)
 ```json
 {
 "version": "2.0.0",
@@ -46,15 +46,38 @@ Wellington Wagner F. Sarmento
 
 ```
 > Para Windows
-> Arquivo: tasks.json
-> Retirado de []()
+- Arquivo: tasks.json
+- Retirado de []()
 
 ```json
 
 ```
 > Para macOS
-> Arquivo launch.json
-> Retirado de [https://code.visualstudio.com/docs/cpp/config-clang-mac](https://code.visualstudio.com/docs/cpp/config-clang-mac)
+- Arquivo launch.json
+- Retirado de [https://code.visualstudio.com/docs/cpp/config-clang-mac](https://code.visualstudio.com/docs/cpp/config-clang-mac)
+
+```json
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "clang - Criar e depurar o arquivo ativo",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "C/C++: clang arquivo de build ativo"
+        }
+    ]
+}
+```
+> Para Windows
+- Arquivo launch.json
+- Retirado de []()
 
 ```json
     "version": "0.2.0",
