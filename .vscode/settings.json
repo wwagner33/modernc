@@ -1,0 +1,9 @@
+{
+    "C_Cpp.autocompleteAddParentheses": true,
+    "doxygen_runner.configuration_filenames": [
+    
+        "Doxyfile",
+        "doxygen.conf"
+    ],
+    "doxygen_runner.configuration_file_override": "${workspaceFolder}/"
+}
