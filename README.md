@@ -9,7 +9,7 @@ Wellington Wagner F. Sarmento
 - **Editor**: Visual Studio Code
 - **Extensões para o Editor**: [Microsoft C/C++ Extetion Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack), Bracket Pair Colorizer, [C/C++ Snppets (Hash)](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer),[Code Runner (.run)](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner)
 - **Compilador**: [clang](https://clang.llvm.org/get_started.html) ou [gcc for Windows](https://gcc.gnu.org/install/binaries.html)
-- ** Depurador**: lldb ou gdb
+- **Depurador**: lldb ou gdb
 - **Instalações**
 - **Configurações**:
 > Para macOS
@@ -17,31 +17,31 @@ Wellington Wagner F. Sarmento
 > Retirado de [https://code.visualstudio.com/docs/cpp/config-clang-mac](https://code.visualstudio.com/docs/cpp/config-clang-mac)
 ```json
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "cppbuild",
-			"label": "C/C++: clang arquivo de build ativo",
-			"command": "/usr/bin/clang",
-			"args": [
-				"-g",
-				"${file}",
-				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
-			],
-			"options": {
-				"cwd": "${fileDirname}"
-			},
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"detail": "compilador: /usr/bin/clang"
-		}
-	]
+"version": "2.0.0",
+"tasks": [
+	{
+		"type": "cppbuild",
+		"label": "C/C++: clang arquivo de build ativo",
+		"command": "/usr/bin/clang",
+		"args": [
+			"-g",
+			"${file}",
+			"-o",
+			"${fileDirname}/${fileBasenameNoExtension}"
+		],
+		"options": {
+			"cwd": "${fileDirname}"
+		},
+		"problemMatcher": [
+			"$gcc"
+		],
+		"group": {
+			"kind": "build",
+			"isDefault": true
+		},
+		"detail": "compilador: /usr/bin/clang"
+	}
+]
 }
 
 ```
@@ -73,4 +73,5 @@ Wellington Wagner F. Sarmento
             "preLaunchTask": "C/C++: clang arquivo de build ativo"
         }
     ]
-}```
+}
+```
