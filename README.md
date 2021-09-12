@@ -8,9 +8,12 @@ Wellington Wagner F. Sarmento
 ## Compiladores, ferramentas, instalações e configurações
 - **Editor**: Visual Studio Code
 - **Extensões para o Editor**: [Microsoft C/C++ Extetion Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack), Bracket Pair Colorizer, [C/C++ Snppets (Hash)](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer),[Code Runner (.run)](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner)
-- **Compilador**: [clang](https://clang.llvm.org/get_started.html) ou [gcc for Windows](https://gcc.gnu.org/install/binaries.html)
+- **Compiladores**: [clang](https://clang.llvm.org/get_started.html) ou [gcc for Windows](https://gcc.gnu.org/install/binaries.html)
 - **Depurador**: lldb ou gdb
+- **Documentação**: [Doxygen](https://www.doxygen.nl/download.html), [tutorial do doxygen](https://moodle.ufsc.br/pluginfile.php/2377678/mod_resource/content/0/DoxygenTutorial.pdf)
 - **Instalações**
+> Para macOS
+> Para Windows
 - **Configurações**:
 > Para macOS
 - Arquivo tasks.json
