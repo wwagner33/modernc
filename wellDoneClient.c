@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
     /* Buffer de envio de mensagens */
     char buffer_out[LEN];
 
-    fprintf(stdout,"Iniciando cliente\n");
+    fprintf(stdout,"Iniciando cliente.\n");
 
     /* Criando socket para o cliente */
     if((sockfd = socket(AF_INET,SOCK_STREAM,0)) == -1){
@@ -74,8 +74,14 @@ int main(int argc, char *argv[]) {
     memset(server.sin_zero,0x0,8);
 
     /* Tenta conectar com o servidor */
+    if((connect(sockfd,(struct sockaddr*) &server,len)) == -1){
+        perror("Não foi possível conectar com nenhum servidor no endereço fornecido!");
+        return EXIT_FAILURE;
+    }
 
-    if((slen = recv(sockfd,buffer_in,len,0)) > 0){
+    /* Recebe a mensagem de apresentacao do servidor */
+
+    if((slen = recv(sockfd,buffer_in,LEN,0)) > 0){
         buffer_in[slen + 1] = '\0';
         fprintf(stdout,"Servidor enviou a mensagem: %s\n",buffer_in);
     }
