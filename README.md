@@ -13,7 +13,9 @@ Wellington Wagner F. Sarmento
 - **Documentação**: [Doxygen](https://www.doxygen.nl/download.html), [tutorial do doxygen](https://moodle.ufsc.br/pluginfile.php/2377678/mod_resource/content/0/DoxygenTutorial.pdf)
 - **Instalações**
 > Para macOS
+
 > Para Windows
+
 - **Configurações**:
 > Para macOS
 - Arquivo tasks.json
