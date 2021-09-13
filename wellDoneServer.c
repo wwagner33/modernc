@@ -59,6 +59,7 @@ int main(int argc, char *argv[]) {
 
     /* Definicao das propriedades do servidor socket */
     server.sin_family=AF_INET;
+    server.sin_addr.s_addr = htonl(INADDR_ANY);
     server.sin_port=htons(PORT);
     memset(server.sin_zero,0x0,8);
 
@@ -114,10 +115,10 @@ int main(int argc, char *argv[]) {
         if(strcmp(buffer,"bye") == 0){
             send(clientfd,"bye",3,0);
         } else {
-            send(clientfd,"Mensagem recebida!\n",4,0);
+            send(clientfd,"Ack",3,0);
         }
 
-    } while (strcmp(buffer,"BYE"));
+    } while (strcmp(buffer,"bye"));
 
     /* Fecha conexao com cliente */
     close(clientfd);
