@@ -61,6 +61,9 @@
  * readImgFile(): le um arquivo de imagem, pdf, etc em um diretorio e coloca em uma area de memoria para ser enviadeo para o cliente.
  * logIt(): cria um log das operacoes de entrada e saida do servidor, bem como de erros.
  * 
+ * As principais funcionalidades do servidor serao colocadas no arquivo httpd.c. No arquivo httpd.h serão colocadas as prototipacao de  
+ * funcoes e definicao de constantes e estruturas de dados a serem usadas. No arquivo main.c sera colocado o loop do servidor, criado o socket e os processos ou threads.
+ * 
  * @return int 
  */
 
