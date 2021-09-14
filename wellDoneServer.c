@@ -52,6 +52,19 @@
 *******************************************************************************/
 
 
+/**
+ * @brief Criando um servidor web para fins didaticos usando linguagem C. As partes do servidor são:
+ * readRequest(): funcao pra tratar as mensagens de request do cliente
+ * writeResponse(): funcao para enviar as mensagens de Response para o Cliente
+ * main(): contem o laco de operacao do servidor e cria um processo (depois deve ser convertido em threads) para cada conexao.
+ * readHtmlFile(): le um arquiv1o presente em um diretorio e coloca em uma area de memoria para ser enviadeo para o cliente.
+ * readImgFile(): le um arquivo de imagem, pdf, etc em um diretorio e coloca em uma area de memoria para ser enviadeo para o cliente.
+ * logIt(): cria um log das operacoes de entrada e saida do servidor, bem como de erros.
+ * 
+ * @return int 
+ */
+
+
 int main(void) {
 
 
