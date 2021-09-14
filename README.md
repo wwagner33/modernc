@@ -1,6 +1,13 @@
 # O que é o wellModernC
 
-Repositório com estudos na linguagem C em ambiente Windows e macOS a fim de entender o funcionamento desta linguagem em seus dialetos e formas mais modernas. Como estou estudando mais sobre o assunto, resolvi compartilhar meus estudos e descobertas. Irei depositar aqui códigos, dicas de material didático e tutoriais de aprendizado da linguagem. O estudo está voltado ao desenvolvimento de algoritmos bioinspirados em linguagem C para uso em UAV, baseado nos trablhos de Patrícia de Sousa Paula.
+Repositório com estudos na linguagem C em ambiente Windows e macOS a fim de entender o funcionamento desta linguagem em seus dialetos e formas mais modernas. Como estou estudando mais sobre o assunto, resolvi compartilhar meus estudos e descobertas. Irei depositar aqui códigos, dicas de material didático e tutoriais de aprendizado da linguagem.
+
+As aplicacoes presentes nesse repositório para aprendizado estarão na seção a seguir.
+
+## Aplicações criadas
+
+- wellDoneServer: servidor web simples para fins didáticos. Ele é composto pelos arquivos: **(para fazer)**.
+- ...
 
 ## Autor
 Wellington Wagner F. Sarmento
