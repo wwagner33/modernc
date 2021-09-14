@@ -6,7 +6,7 @@ As aplicacoes presentes nesse repositório para aprendizado estarão na seção 
 
 ## Aplicações criadas
 
-- wellDoneServer: servidor web simples para fins didáticos. Ele é composto pelos arquivos: **(para fazer)**.
+- **wellDoneServer**: servidor web simples para fins didáticos. Ele é composto pelos arquivos: **(para fazer)**.
 - ...
 
 ## Autor
