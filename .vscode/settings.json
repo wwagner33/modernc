@@ -5,5 +5,14 @@
         "Doxyfile",
         "doxygen.conf"
     ],
-    "doxygen_runner.configuration_file_override": "${workspaceFolder}/"
+    "doxygen_runner.configuration_file_override": "${workspaceFolder}/",
+    "files.associations": {
+        "string.h": "c",
+        "errno.h": "c",
+        "socket.h": "c",
+        "types.h": "c",
+        "_types.h": "c",
+        "in.h": "c",
+        "netdb.h": "c"
+    }
 }
