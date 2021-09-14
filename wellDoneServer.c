@@ -1,39 +1,58 @@
 /**
- * @file wellDoneServer.c
- * @author Wellington Wagner F. Sarmento (wwagner@virtual.ufc.br)
- * @brief Programa para teste de socket. Ele imp,emta um protocolo simples de comunicação: 
-    * WUP: Servidor manda mensagem de boas vindas para o cliente que esta se conectando
-    * HLO: Cliente verifica disponibilidade do servidor. Se servidornão responder em 20 ms, cliente espera 10 ms e envia novo HLO. Se não responder, cliente encerra tentativas de comunicação. 
-    * ACK: Servidor reponde que está livre para receber mensagens
-    * POST: Cliente envia mensagem para servidor. POST <Mensagem>
-    * GET: Cliente trás mensagens do servidor. GET
-    * BYE: Cliente finaliza comunicação com servidor ou servidor finaliza comunicação com cliente.
- * @version 0.1
- * @date 2021-09-10
- * 
+ * @file      wellDoneServer.c
+ * @authors   Wellington Wagner F. Sarmento
  * @copyright Copyleft 2021
- * 
+ *
+ * @brief Servidor Web Simples para fins didaticos
  */
+/*******************************************************************************
+* Includes
+*******************************************************************************/
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <errno.h>
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netdb.h>
+#include <stdlib.h> //Biblioteca responsavel por funcoes de manipulacao de memoria.
+#include <unistd.h> //Biblioteca de conexao com o Unix ou POSIX system.  A funcao close() esta nela. EXIT_SUCESS e EXIT_Failure estao nela.
+#include <string.h> //Biblioteca de manipulacao de strings. A funcao strcmp() e memset() esta nela.
+#include <sys/errno.h> //Utilizado na exibicao do erro enviado por funcoes como o setsockopt().
+
+#include <sys/socket.h> //Onde estao definidas todas as funcoes de socket.
+#include <netinet/in.h> //Onde esta definida a estrutura sockaddr_in.
+
+
+/*******************************************************************************
+* Defines
+*******************************************************************************/
 
 /* porta do servido */
-#define PORT 4242
+#define PORT 3000
 
 /* Tamanho do Buffer */
 #define BUFFER_LENGTH 4096
 
 
-int main(int argc, char *argv[]) {
+/*******************************************************************************
+* Local Types and Typedefs
+*******************************************************************************/
+
+/*******************************************************************************
+* Global Variables
+*******************************************************************************/
+
+/*******************************************************************************
+* Static Function Prototypes
+*******************************************************************************/
+
+/*******************************************************************************
+* Static Variables
+*******************************************************************************/
+
+/*******************************************************************************
+* Functions
+*******************************************************************************/
+
+
+int main(void) {
 
 
     /* Estruturas usadas no para implmentação do servidor */
@@ -48,7 +67,6 @@ int main(int argc, char *argv[]) {
     fprintf(stdout,"Iniciando o servidor\n");
 
     /* Cria um Socket IPv4 */
-
     serverfd=socket(AF_INET,SOCK_STREAM,0);
     if(serverfd == -1){
         perror("Socket nao pode ser criado:");
@@ -57,13 +75,27 @@ int main(int argc, char *argv[]) {
 
     fprintf(stdout,"Servidor socket criado com fd: %d\n",serverfd);
 
+    /**
+     * \todo "Melhoria na identificacao de IP Address e disponibilidade de porta antes de criar um Socket." 
+     * Ver o uso do getaddrinfo() para retornar o endereco livre e testar se a porta esta ocupada antes de criar o socket.
+     * Ver material: https://man7.org/linux/man-pages/man3/getaddrinfo.3.html
+     * 
+     */
+
     /* Definicao das propriedades do servidor socket */
-    server.sin_family=AF_INET;
-    server.sin_addr.s_addr = htonl(INADDR_ANY);
+    server.sin_family=AF_INET; 
+    server.sin_addr.s_addr = htonl(INADDR_ANY); //As funcoes de conversao Host to Network ou Network to Host permitem converter os formatos de bytes para o formato usado no computador, sendo opcionais em maquinas little-endian e obrigatorios em maquinas com big-endian. O "s" no final significa Short (16bits). Se for necessario um inteiro de 32bits, use as mesmas funcoes mas com "l" no final.
     server.sin_port=htons(PORT);
-    memset(server.sin_zero,0x0,8);
+    bzero(server.sin_zero,8); //O sin_zero e para uso do SO
+
+    //memset(server.sin_zero,0x0,8); //Coloca o caracter null "\0" no a primeira posicao da string dada por 
 
     /* Manipulador de erro para o caso da porta ja estar em uso */
+    /** 
+     * Uso de setsockopt() para criacao de um socket. Os parametros sao:
+     * SOL_SOCKET: Define que o nivel onde sera pesquisado para o socket é o proprio nivel de Socket.
+     * SO_REUSEADDR: Permitre o uso de localhost para bind(). Ele peder um valor inteiro de validacao, no caso, dado por yes
+     * */
     int yes=1;
     if(setsockopt(serverfd,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1){
         perror("Erro de Opcoes do Socket: ");
@@ -98,9 +130,14 @@ int main(int argc, char *argv[]) {
     if(send(clientfd,buffer,strlen(buffer),0)){
         fprintf(stdout,"Cliente conectado. \n Esperando mensagens do cliente.\n");
     }
-
+/**
+ * \todo "Loop principal do servidor"
+ * 
+ * Fazer o loop principal do servidor com mecanismos de timeout para recepcao de mensagens
+ * 
+ */
     /* Mantem comunicacao ate que o cliente envia uma mensagem BYE */
-    do{
+    for(;;){
         /* Zera buffer */
         memset(buffer,0x0,BUFFER_LENGTH);
 
@@ -114,18 +151,20 @@ int main(int argc, char *argv[]) {
         /* Se for enviada a mensagem BYE a conexao e desfeita */
         if(strcmp(buffer,"bye") == 0){
             send(clientfd,"bye",3,0);
+            //close(clientfd);
+            printf("Conexao fechada!\n\n");
         } else {
-            send(clientfd,"Ack",3,0);
+            send(clientfd,"Mensagem Recebida!\n",18,0);
         }
 
-    } while (strcmp(buffer,"bye"));
+    }
 
     /* Fecha conexao com cliente */
-    close(clientfd);
+
 
     /* Fecha socket local */
-    close(serverfd);
-    printf("Conexao fechada!\n\n");
+    // close(serverfd);
+
     
 
     return EXIT_SUCCESS;

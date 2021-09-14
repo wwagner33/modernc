@@ -1,6 +1,6 @@
 /**
  * @file wellDoneClientß.c
- * @author Wellington Wagner F. Sarmento (wwagner@virtual.ufc.br)
+ * @author Wellington Wagner F. Sarmento
  * @brief Programa para teste de socket. Ele imp,emta um protocolo simples de comunicação: 
     * WUP: Servidor manda mensagem de boas vindas para o cliente que esta se conectando
     * HLO: Cliente verifica disponibilidade do servidor. Se servidornão responder em 20 ms, cliente espera 10 ms e envia novo HLO. Se não responder, cliente encerra tentativas de comunicação. 
@@ -90,8 +90,8 @@ int main(int argc, char *argv[]) {
     while(true){
 
         /* Zera os buffers */
-        memset(buffer_in,0x0,LEN);
-        memset(buffer_out,0x0,LEN);
+        bzero(buffer_in,LEN);
+        bzero(buffer_out,LEN);
 
         fprintf(stdout,"Envie uma mensagem para o servidor: ");
         fgets(buffer_out,len,stdin);
